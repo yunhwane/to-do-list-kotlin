@@ -22,5 +22,7 @@ class MemberAdepter(private val memberRepository: MemberRepository) : MemberPort
         return memberRepository.existsByEmail(email)
     }
 
-
+    override fun duplicateNickNameCheck(nickName: String): Boolean {
+        return memberRepository.existsByNickName(nickName)
+    }
 }

@@ -17,13 +17,16 @@ data class Member(
         @Column(name = "email")
         var email: String = "",
 
+        @Column(name = "nickName")
+        var nickName: String = "",
+
         @Column(name = "password")
         var password: String = "",
 
         @Column(name = "authority")
         var userType: UserType
 ){
-        constructor(email: String, password: String) : this(null, email, password, UserType.USER )
+        constructor(email: String, nickName: String ,password: String) : this(null, email, nickName, password, UserType.USER)
 }
 
 

@@ -9,4 +9,6 @@ interface MemberPort {
     fun save(newMember: Member)
     fun findById(memberId: Long): Member
     fun duplicateEmailCheck(email: String): Boolean
+    fun duplicateNickNameCheck(nickName: String): Boolean
+
 }

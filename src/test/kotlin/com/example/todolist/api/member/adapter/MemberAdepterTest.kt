@@ -27,7 +27,7 @@ class MemberAdepterTest @Autowired constructor(private val memberPort: MemberPor
 
     @BeforeEach
     fun setUp(){
-        member = Member(null, "wjsdbsghks96@naver.com", "1234", UserType.USER)
+        member = Member(null, "wjsdbsghks96@naver.com","윤환이","1234", UserType.USER)
     }
 
     @DisplayName("유저 save 테스트")
@@ -78,5 +78,14 @@ class MemberAdepterTest @Autowired constructor(private val memberPort: MemberPor
 
         //when
         assertThat(memberPort.duplicateEmailCheck("wjsdbsghks96@naver.com")).isTrue()
+    }
+
+    @DisplayName("닉네임 중복 성공")
+    @Test fun `닉네임 중복 체크`(){
+        //given
+        memberPort.save(member)
+
+        //when
+        assertThat(memberPort.duplicateNickNameCheck("윤환이")).isTrue()
     }
 }

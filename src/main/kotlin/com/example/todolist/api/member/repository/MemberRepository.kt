@@ -8,4 +8,5 @@ import org.springframework.data.repository.query.Param
 interface MemberRepository :JpaRepository<Member,Long>  {
 
     fun existsByEmail(email: String) :Boolean
+    fun existsByNickName(nickName: String) :Boolean
 }
