@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db
+    username: root
+    password: Uni421811
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    open-in-view: true
+
+
+
+
