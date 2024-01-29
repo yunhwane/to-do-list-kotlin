@@ -1,12 +1,13 @@
 package com.example.todolist.api.member.adapter
 
 import com.example.todolist.api.member.domain.Member
+import com.example.todolist.api.member.infra.MemberRepositoryCustom
 import com.example.todolist.api.member.port.MemberPort
 import com.example.todolist.api.member.repository.MemberRepository
 import org.springframework.stereotype.Component
 
 @Component
-class MemberAdepter(private val memberRepository: MemberRepository) : MemberPort {
+class MemberAdepter(private val memberRepository: MemberRepository, private val memberRepositoryCustom: MemberRepositoryCustom) : MemberPort {
 
     override fun save(newMember: Member) {
         memberRepository.save(newMember)
@@ -19,10 +20,10 @@ class MemberAdepter(private val memberRepository: MemberRepository) : MemberPort
     }
 
     override fun duplicateEmailCheck(email: String): Boolean {
-        return memberRepository.existsByEmail(email)
+        return memberRepositoryCustom.existsByEmail(email)
     }
 
     override fun duplicateNickNameCheck(nickName: String): Boolean {
-        return memberRepository.existsByNickName(nickName)
+        return memberRepositoryCustom.existsByNickName(nickName)
     }
 }
