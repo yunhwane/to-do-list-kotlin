@@ -10,6 +10,7 @@
 5. Spring Security
 6. MySQL Database
 7. Log4j2
+8. JUnit5
 
 ## 프로젝트 구성 및 기능 설계 
 
