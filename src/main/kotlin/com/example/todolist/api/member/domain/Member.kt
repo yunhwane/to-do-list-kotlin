@@ -27,6 +27,10 @@ data class Member(
         var userType: UserType
 ){
         constructor(email: String, nickName: String ,password: String) : this(null, email, nickName, password, UserType.USER)
+        constructor() : this(null, "", "", "", UserType.USER) {
+
+        }
+
 }
 
 
