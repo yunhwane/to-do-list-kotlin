@@ -51,10 +51,6 @@ class SecurityConfig {
     }
 }
 
-
-
-
-
 class LoggingFilter : Filter {
 
     override fun doFilter(request: ServletRequest?, response: ServletResponse?, chain: FilterChain?) {
@@ -85,4 +81,6 @@ class LoggingFilter : Filter {
         logger().info(log)
     }
 }
+
+
 
