@@ -16,7 +16,8 @@ import org.springframework.transaction.annotation.Transactional
 @SpringBootTest
 @Transactional
 @DisplayName("MemberRepositoryCustom 테스트")
-class MemberRepositoryCustomTest(@Autowired private val memberRepositoryCustom: MemberRepositoryCustom, @Autowired private val memberRepository: MemberRepository){
+class MemberSupportImplTest(
+    @Autowired private val memberRepository: MemberRepository){
 
     private lateinit var member: Member
 
@@ -26,14 +27,13 @@ class MemberRepositoryCustomTest(@Autowired private val memberRepositoryCustom: 
         memberRepository.save(member)
     }
 
-
     @Test
     fun `이메일 중복 체크 - 중복되는 경우`() {
         // given
         val email = "wjsdbsghks96@naver.com"
 
         // when
-        val existsByEmail = memberRepositoryCustom.existsByEmail(email)
+        val existsByEmail = memberRepository.existsByEmail(email)
 
         // then
         assertThat(existsByEmail).isTrue()
@@ -45,7 +45,7 @@ class MemberRepositoryCustomTest(@Autowired private val memberRepositoryCustom: 
         val email = "unique@example.com"
 
         // when
-        val existsByEmail = memberRepositoryCustom.existsByEmail(email)
+        val existsByEmail = memberRepository.existsByEmail(email)
 
         // then
         assertThat(existsByEmail).isFalse()
@@ -57,7 +57,7 @@ class MemberRepositoryCustomTest(@Autowired private val memberRepositoryCustom: 
         val nickName = "윤환이"
 
         // when
-        val existsByNickName = memberRepositoryCustom.existsByNickName(nickName)
+        val existsByNickName = memberRepository.existsByNickName(nickName)
 
         // then
         assertThat(existsByNickName).isTrue()
@@ -69,10 +69,11 @@ class MemberRepositoryCustomTest(@Autowired private val memberRepositoryCustom: 
         val nickName = "윤환이2"
 
         // when
-        val existsByNickName = memberRepositoryCustom.existsByNickName(nickName)
+        val existsByNickName = memberRepository.existsByNickName(nickName)
 
         // then
         assertThat(existsByNickName).isFalse()
     }
+
 
 }
